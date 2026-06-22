@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard · Rituals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../auth.css" />
+</head>
+<body data-page="dashboard">
+  <div class="app-shell">
+    <aside class="nav-panel">
+      <div class="nav-brand">Rituals</div>
+      <nav class="nav-links">
+        <a class="nav-link active" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" href="habits.html">Habits</a>
+        <a class="nav-link" href="goals.html">Goals</a>
+        <a class="nav-link" href="journal.html">Journal</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+      </nav>
+      <div class="nav-footer">
+        <button type="button" class="btn-secondary" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="page-panel">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Welcome back</p>
+          <h1>Good habits start today.</h1>
+          <p class="page-intro">Hi <span id="user-name"></span>, track habits, progress goals, and journal every day.</p>
+        </div>
+        <div class="header-actions">
+          <a href="habits.html" class="btn-primary">Manage habits</a>
+        </div>
+      </header>
+
+      <section class="cards-grid">
+        <article class="card">
+          <div class="card-title">Today’s habits</div>
+          <div id="dashboard-habits-summary" class="card-copy">Loading habits...</div>
+          <div class="card-actions">
+            <a href="habits.html" class="btn-secondary">Open habits</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Goal snapshot</div>
+          <div id="dashboard-goals-summary" class="card-copy">Loading goals...</div>
+          <div class="card-actions">
+            <a href="goals.html" class="btn-secondary">Open goals</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Journal prompt</div>
+          <div id="dashboard-journal-prompt" class="card-copy">Write down one small win from today.</div>
+          <div class="card-actions">
+            <a href="journal.html" class="btn-secondary">Write journal</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Quick stats</div>
+          <ul class="stat-list">
+            <li><strong id="stat-completed-habits">0</strong> habits completed today</li>
+            <li><strong id="stat-goals-progress">0%</strong> average goal progress</li>
+            <li><strong id="stat-journal-entries">0</strong> journal entries</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../supabase-config.js"></script>
+  <script src="../supabase.js"></script>
+  <script src="../auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

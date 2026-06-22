@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goals · Rituals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../auth.css" />
+</head>
+<body data-page="goals">
+  <div class="app-shell">
+    <aside class="nav-panel">
+      <div class="nav-brand">Rituals</div>
+      <nav class="nav-links">
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" href="habits.html">Habits</a>
+        <a class="nav-link active" href="goals.html">Goals</a>
+        <a class="nav-link" href="journal.html">Journal</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+      </nav>
+      <div class="nav-footer">
+        <button type="button" class="btn-secondary" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="page-panel">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Goals</p>
+          <h1>Turn big outcomes into bite-sized milestones.</h1>
+          <p class="page-intro">Create goals, define deadlines, and track your progress with milestones.</p>
+        </div>
+        <div class="header-actions">
+          <a href="dashboard.html" class="btn-secondary">Back to dashboard</a>
+        </div>
+      </header>
+
+      <section class="form-card">
+        <div class="form-grid">
+          <div class="field">
+            <label for="goal-title">Goal title</label>
+            <input id="goal-title" placeholder="Complete 30-day writing challenge" />
+          </div>
+          <div class="field">
+            <label for="goal-deadline">Deadline</label>
+            <input id="goal-deadline" type="date" />
+          </div>
+        </div>
+        <button type="button" class="btn-primary" onclick="addGoal()">Add goal</button>
+      </section>
+
+      <section class="list-panel">
+        <div class="section-header">
+          <h2>Active goals</h2>
+          <p id="goals-summary">Loading goals...</p>
+        </div>
+        <div id="goals-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../supabase-config.js"></script>
+  <script src="../supabase.js"></script>
+  <script src="../auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile · Rituals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../auth.css" />
+</head>
+<body data-page="profile">
+  <div class="app-shell">
+    <aside class="nav-panel">
+      <div class="nav-brand">Rituals</div>
+      <nav class="nav-links">
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" href="habits.html">Habits</a>
+        <a class="nav-link" href="goals.html">Goals</a>
+        <a class="nav-link" href="journal.html">Journal</a>
+        <a class="nav-link active" href="profile.html">Profile</a>
+      </nav>
+      <div class="nav-footer">
+        <button type="button" class="btn-secondary" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="page-panel">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h1>Keep your account details and stats in one place.</h1>
+          <p class="page-intro">Update your name, see progress stats, and manage your profile information.</p>
+        </div>
+        <div class="header-actions">
+          <a href="dashboard.html" class="btn-secondary">Back to dashboard</a>
+        </div>
+      </header>
+
+      <section class="profile-grid">
+        <article class="card profile-card">
+          <div class="profile-avatar">R</div>
+          <div>
+            <div class="card-title">Your profile</div>
+            <p id="profile-email" class="card-copy">Email not available</p>
+          </div>
+        </article>
+
+        <article class="card stats-card">
+          <div class="card-title">Your stats</div>
+          <ul class="stat-list">
+            <li><strong id="profile-longest-streak">0</strong> longest streak</li>
+            <li><strong id="profile-goals-completed">0</strong> goals completed</li>
+            <li><strong id="profile-journal-count">0</strong> journal entries</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="form-card">
+        <div class="field">
+          <label for="profile-name">Display name</label>
+          <input id="profile-name" placeholder="Your name" />
+        </div>
+        <button type="button" class="btn-primary" onclick="saveProfile()">Save profile</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="../supabase-config.js"></script>
+  <script src="../supabase.js"></script>
+  <script src="../auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

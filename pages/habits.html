@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Habits · Rituals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../auth.css" />
+</head>
+<body data-page="habits">
+  <div class="app-shell">
+    <aside class="nav-panel">
+      <div class="nav-brand">Rituals</div>
+      <nav class="nav-links">
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+        <a class="nav-link active" href="habits.html">Habits</a>
+        <a class="nav-link" href="goals.html">Goals</a>
+        <a class="nav-link" href="journal.html">Journal</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+      </nav>
+      <div class="nav-footer">
+        <button type="button" class="btn-secondary" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="page-panel">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Habits</p>
+          <h1>Build streaks with simple daily actions.</h1>
+          <p class="page-intro">Add habits, mark progress, and keep your streaks moving every day.</p>
+        </div>
+        <div class="header-actions">
+          <a href="dashboard.html" class="btn-secondary">Back to dashboard</a>
+        </div>
+      </header>
+
+      <section class="form-card">
+        <div class="form-grid">
+          <div class="field">
+            <label for="habit-title">Habit name</label>
+            <input id="habit-title" placeholder="Drink 8 cups of water" />
+          </div>
+          <div class="field">
+            <label for="habit-desc">Why it matters</label>
+            <input id="habit-desc" placeholder="Stay energized and clear-headed" />
+          </div>
+        </div>
+        <button type="button" class="btn-primary" onclick="addHabit()">Add habit</button>
+      </section>
+
+      <section class="list-panel">
+        <div class="section-header">
+          <h2>Today's habit list</h2>
+          <p id="habits-summary">Loading habits...</p>
+        </div>
+        <div id="habits-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../supabase-config.js"></script>
+  <script src="../supabase.js"></script>
+  <script src="../auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
