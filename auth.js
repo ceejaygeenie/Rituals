@@ -76,16 +76,17 @@ window.getCurrentUserEmail = async function() {
 };
 
 window.logout = async function() {
+  const redirectTo = window.location.pathname.includes('/pages/') ? '../index.html' : './index.html';
   if (isDemoMode()) {
     clearDemoCurrent();
-    window.location.href = '../index.html';
+    window.location.href = redirectTo;
     return;
   }
   try {
     const sb = await getSupabase();
     await sb.auth.signOut();
   } catch (_) {}
-  window.location.href = '../index.html';
+  window.location.href = redirectTo;
 };
 
 // ---- Tab switching ----
@@ -283,8 +284,11 @@ async function handleGoogleAuth() {
   }
 }
 
-// ---- Auto-redirect if already logged in ----
+// ---- Auto-redirect if already logged in (only on the root auth page) ----
 (async () => {
+  // Only run this auto-redirect when we're not already inside the /pages/ app folder
+  if (window.location.pathname.includes('/pages/')) return;
+
   try {
     if (isDemoMode()) {
       if (getDemoCurrent()) window.location.href = './pages/dashboard.html';
