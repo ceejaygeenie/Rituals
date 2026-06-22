@@ -349,7 +349,7 @@ function saveProfile() {
 }
 
 async function requirePageAuth() {
-  if (window.isDemoMode && window.isDemoMode()) {
+  if (isDemoMode && isDemoMode()) {
     const demoCurrent = localStorage.getItem('rituals_demo_current');
     if (!demoCurrent) {
       window.location.href = '../index.html';

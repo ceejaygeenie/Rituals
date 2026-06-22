@@ -190,7 +190,7 @@ async function handleLogin() {
       if (error) {
         showError('login-error', error.message || 'Sign in failed. Try again.');
       } else {
-        window.location.href = 'pages/dashboard.html';
+        window.location.href = './pages/dashboard.html';
       }
     } else {
       const sb = await getSupabase();
@@ -199,7 +199,7 @@ async function handleLogin() {
       if (error) {
         showError('login-error', error.message || 'Sign in failed. Try again.');
       } else {
-        window.location.href = 'pages/dashboard.html';
+        window.location.href = './pages/dashboard.html';
       }
     }
   } catch (err) {
@@ -236,8 +236,10 @@ async function handleSignup() {
       if (error) {
         showError('signup-error', error.message || 'Sign up failed. Try again.');
       } else {
-        showSuccess('signup-success', `Welcome, ${name}! Your account is ready.`);
-        document.getElementById('form-signup').querySelectorAll('input').forEach(i => i.value = '');
+        showSuccess('signup-success', `Welcome, ${name}! Redirecting to your dashboard...`);
+        setTimeout(() => {
+          window.location.href = './pages/dashboard.html';
+        }, 800);
       }
     } else {
       const sb = await getSupabase();
@@ -250,7 +252,7 @@ async function handleSignup() {
       if (error) {
         showError('signup-error', error.message || 'Sign up failed. Try again.');
       } else {
-        showSuccess('signup-success', `We sent a confirmation link to ${email}. Check your inbox to activate your account.`);
+        showSuccess('signup-success', `Welcome! Check your email at ${email} to verify your account, then sign in.`);
         document.getElementById('form-signup').querySelectorAll('input').forEach(i => i.value = '');
       }
     }
@@ -266,7 +268,7 @@ async function handleGoogleAuth() {
   try {
     if (isDemoMode()) {
       demoSignUp('Demo user', 'demo@rituals.app', 'demo-password');
-      window.location.href = 'pages/dashboard.html';
+      window.location.href = './pages/dashboard.html';
       return;
     }
 
@@ -285,14 +287,14 @@ async function handleGoogleAuth() {
 (async () => {
   try {
     if (isDemoMode()) {
-      if (getDemoCurrent()) window.location.href = 'pages/dashboard.html';
+      if (getDemoCurrent()) window.location.href = './pages/dashboard.html';
       return;
     }
 
     const sb = await getSupabase();
     const { data: { session } } = await sb.auth.getSession();
-    if (session) window.location.href = 'pages/dashboard.html';
+    if (session) window.location.href = './pages/dashboard.html';
   } catch (_) {
-    if (getDemoCurrent()) window.location.href = 'pages/dashboard.html';
+    if (getDemoCurrent()) window.location.href = './pages/dashboard.html';
   }
 })();
